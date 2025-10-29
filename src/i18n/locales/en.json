@@ -1,0 +1,106 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About Us",
+    "products": "Products",
+    "services": "Services",
+    "portfolio": "Portfolio",
+    "blog": "Blog",
+    "joinUs": "Join Us",
+    "contact": "Contact",
+    "myOrders": "My Orders"
+  },
+  "hero": {
+    "title": "Offset & Digital Printing Specialists",
+    "subtitle": "Professional printing solutions for SMEs and businesses in Indonesia. High quality, competitive prices, in-house production.",
+    "cta1": "Explore Products",
+    "cta2": "Free Consultation"
+  },
+  "features": {
+    "title": "Why Choose Us?",
+    "inHouse": {
+      "title": "In-House Production",
+      "desc": "Modern production facilities for maximum quality control"
+    },
+    "expert": {
+      "title": "Expert Team",
+      "desc": "Experienced operators with international certifications"
+    },
+    "quality": {
+      "title": "High Quality",
+      "desc": "Premium materials and latest printing technology"
+    },
+    "sustainability": {
+      "title": "Eco-Friendly",
+      "desc": "Committed to sustainable printing practices"
+    }
+  },
+  "testimonials": {
+    "title": "Trusted By Leading Brands"
+  },
+  "products": {
+    "title": "Product Catalog",
+    "filter": "Filter",
+    "category": "Category",
+    "all": "All",
+    "softBox": "Soft Box",
+    "foodBox": "Food Box",
+    "calculator": "Price Calculator",
+    "quantity": "Quantity",
+    "size": "Size",
+    "material": "Material",
+    "estimate": "Estimate",
+    "addToCart": "Add to Cart",
+    "viewDetails": "View Details"
+  },
+  "cart": {
+    "title": "Shopping Cart",
+    "empty": "Cart is empty",
+    "total": "Total",
+    "checkout": "Checkout",
+    "continueShopping": "Continue Shopping"
+  },
+  "about": {
+    "title": "About PrintThink",
+    "subtitle": "Your Trusted Partner For Printing Solutions",
+    "history": "Our History",
+    "historyText": "PrintThink was founded in 2010 with a vision to provide high-quality printing services for SMEs in Indonesia. With over 13 years of experience, we have served thousands of clients from various industries.",
+    "vision": "Vision & Mission",
+    "visionText": "To become a leading printing industry player in Indonesia with a focus on quality, innovation, and environmental sustainability.",
+    "team": "Our Team"
+  },
+  "contact": {
+    "title": "Contact Us",
+    "subtitle": "Ready to help with your printing needs",
+    "name": "Name",
+    "email": "Email",
+    "message": "Message",
+    "send": "Send Message",
+    "factories": "Factory Locations",
+    "factory1": "Jakarta - Jl. Industri No. 123",
+    "factory2": "Surabaya - Jl. Pahlawan No. 456",
+    "factory3": "Bandung - Jl. Merdeka No. 789"
+  },
+  "joinUs": {
+    "title": "Join Our Team",
+    "subtitle": "Build your career in the printing industry with PrintThink",
+    "openPositions": "Open Positions",
+    "apply": "Apply Now",
+    "designer": "Graphic Designer",
+    "designerDesc": "Looking for creative designer with min. 2 years experience",
+    "manager": "Production Manager",
+    "managerDesc": "Lead production team with min. 5 years experience"
+  },
+  "footer": {
+    "tagline": "Professional printing solutions for your business",
+    "quickLinks": "Quick Links",
+    "followUs": "Follow Us",
+    "research": "Our Research",
+    "rights": "© 2025 PrintThink. Built with ❤️ for Indonesian businesses. All rights reserved."
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "An error occurred",
+    "success": "Success"
+  }
+}

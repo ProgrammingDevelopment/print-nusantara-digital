@@ -1,0 +1,106 @@
+{
+  "nav": {
+    "home": "Beranda",
+    "about": "Tentang Kami",
+    "products": "Produk",
+    "services": "Layanan",
+    "portfolio": "Portofolio",
+    "blog": "Blog",
+    "joinUs": "Bergabung",
+    "contact": "Kontak",
+    "myOrders": "Pesanan Saya"
+  },
+  "hero": {
+    "title": "Spesialis Percetakan Offset & Digital",
+    "subtitle": "Solusi printing profesional untuk UKM dan bisnis di Indonesia. Kualitas tinggi, harga bersaing, produksi in-house.",
+    "cta1": "Jelajahi Produk",
+    "cta2": "Konsultasi Gratis"
+  },
+  "features": {
+    "title": "Mengapa Pilih Kami?",
+    "inHouse": {
+      "title": "Produksi In-House",
+      "desc": "Fasilitas produksi modern untuk kontrol kualitas maksimal"
+    },
+    "expert": {
+      "title": "Tim Ahli",
+      "desc": "Operator berpengalaman dengan sertifikasi internasional"
+    },
+    "quality": {
+      "title": "Kualitas Tinggi",
+      "desc": "Material premium dan teknologi printing terkini"
+    },
+    "sustainability": {
+      "title": "Ramah Lingkungan",
+      "desc": "Komitmen pada praktik percetakan berkelanjutan"
+    }
+  },
+  "testimonials": {
+    "title": "Dipercaya Oleh Brand Ternama"
+  },
+  "products": {
+    "title": "Katalog Produk",
+    "filter": "Filter",
+    "category": "Kategori",
+    "all": "Semua",
+    "softBox": "Soft Box",
+    "foodBox": "Food Box",
+    "calculator": "Kalkulator Harga",
+    "quantity": "Jumlah",
+    "size": "Ukuran",
+    "material": "Material",
+    "estimate": "Estimasi",
+    "addToCart": "Tambah ke Keranjang",
+    "viewDetails": "Lihat Detail"
+  },
+  "cart": {
+    "title": "Keranjang Belanja",
+    "empty": "Keranjang kosong",
+    "total": "Total",
+    "checkout": "Checkout",
+    "continueShopping": "Lanjut Belanja"
+  },
+  "about": {
+    "title": "Tentang PrintThink",
+    "subtitle": "Mitra Terpercaya Untuk Solusi Printing Anda",
+    "history": "Sejarah Kami",
+    "historyText": "PrintThink didirikan pada tahun 2010 dengan visi menyediakan layanan percetakan berkualitas tinggi untuk UKM di Indonesia. Dengan pengalaman lebih dari 13 tahun, kami telah melayani ribuan klien dari berbagai industri.",
+    "vision": "Visi & Misi",
+    "visionText": "Menjadi pemimpin industri percetakan di Indonesia dengan fokus pada kualitas, inovasi, dan keberlanjutan lingkungan.",
+    "team": "Tim Kami"
+  },
+  "contact": {
+    "title": "Hubungi Kami",
+    "subtitle": "Siap membantu kebutuhan printing Anda",
+    "name": "Nama",
+    "email": "Email",
+    "message": "Pesan",
+    "send": "Kirim Pesan",
+    "factories": "Lokasi Pabrik",
+    "factory1": "Jakarta - Jl. Industri No. 123",
+    "factory2": "Surabaya - Jl. Pahlawan No. 456",
+    "factory3": "Bandung - Jl. Merdeka No. 789"
+  },
+  "joinUs": {
+    "title": "Bergabung Dengan Tim Kami",
+    "subtitle": "Bangun karir di industri printing bersama PrintThink",
+    "openPositions": "Posisi Terbuka",
+    "apply": "Lamar Sekarang",
+    "designer": "Graphic Designer",
+    "designerDesc": "Mencari desainer kreatif dengan pengalaman min. 2 tahun",
+    "manager": "Production Manager",
+    "managerDesc": "Memimpin tim produksi dengan pengalaman min. 5 tahun"
+  },
+  "footer": {
+    "tagline": "Solusi printing profesional untuk bisnis Anda",
+    "quickLinks": "Tautan Cepat",
+    "followUs": "Ikuti Kami",
+    "research": "Riset Kami",
+    "rights": "© 2025 PrintThink. Dibangun dengan ❤️ untuk bisnis Indonesia. Hak cipta dilindungi."
+  },
+  "common": {
+    "loading": "Memuat...",
+    "error": "Terjadi kesalahan",
+    "success": "Berhasil"
+  }
+}
