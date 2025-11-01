@@ -33,22 +33,19 @@ export const Navbar = () => {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <Link to="/" className="flex items-center space-x-2">
-            <div className="w-10 h-10 bg-foreground/90 rounded-lg flex items-center justify-center">
-              <span className="text-background font-bold text-xl">PT</span>
-            </div>
-            <span className="text-xl font-bold text-foreground">
+          <Link to="/" className="flex items-center">
+            <span className="text-xl md:text-2xl font-bold text-foreground">
               PrintThink
             </span>
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-6">
+          <div className="hidden lg:flex items-center space-x-4 xl:space-x-6">
             {navLinks.map((link) => (
               <Link
                 key={link.path}
                 to={link.path}
-                className="text-foreground hover:text-primary transition-smooth font-medium"
+                className="text-foreground hover:text-primary transition-smooth font-medium text-sm xl:text-base whitespace-nowrap"
               >
                 {link.label}
               </Link>
@@ -56,7 +53,7 @@ export const Navbar = () => {
           </div>
 
           {/* Right Actions */}
-          <div className="flex items-center space-x-3">
+          <div className="flex items-center space-x-2 md:space-x-3">
             {/* Language Switcher */}
             <div className="hidden sm:flex items-center space-x-1 bg-secondary rounded-lg p-1">
               {languages.map((lang) => (
@@ -79,15 +76,16 @@ export const Navbar = () => {
               variant="ghost"
               size="icon"
               onClick={() => setTheme(theme === "light" ? "dark" : "light")}
+              className="h-9 w-9"
             >
-              {theme === "light" ? <FiMoon /> : <FiSun />}
+              {theme === "light" ? <FiMoon className="h-4 w-4" /> : <FiSun className="h-4 w-4" />}
             </Button>
 
             {/* Cart */}
             {user && (
-              <Button variant="ghost" size="icon" className="relative" asChild>
+              <Button variant="ghost" size="icon" className="relative h-9 w-9" asChild>
                 <Link to="/cart">
-                  <FiShoppingCart />
+                  <FiShoppingCart className="h-4 w-4" />
                   <span className="absolute -top-1 -right-1 bg-accent text-accent-foreground text-xs rounded-full w-5 h-5 flex items-center justify-center">
                     0
                   </span>
@@ -97,13 +95,19 @@ export const Navbar = () => {
 
             {/* Auth Actions */}
             {user ? (
-              <Button variant="ghost" size="icon" onClick={signOut} title="Sign Out">
-                <FiLogOut />
+              <Button 
+                variant="ghost" 
+                size="icon" 
+                onClick={signOut} 
+                title="Sign Out"
+                className="h-9 w-9"
+              >
+                <FiLogOut className="h-4 w-4" />
               </Button>
             ) : (
-              <Button variant="default" asChild size="sm">
+              <Button variant="default" asChild size="sm" className="hidden sm:flex">
                 <Link to="/auth">
-                  <FiUser className="mr-2" />
+                  <FiUser className="mr-2 h-4 w-4" />
                   Sign In
                 </Link>
               </Button>
@@ -113,10 +117,10 @@ export const Navbar = () => {
             <Button
               variant="ghost"
               size="icon"
-              className="md:hidden"
+              className="lg:hidden h-9 w-9"
               onClick={() => setIsOpen(!isOpen)}
             >
-              {isOpen ? <FiX /> : <FiMenu />}
+              {isOpen ? <FiX className="h-5 w-5" /> : <FiMenu className="h-5 w-5" />}
             </Button>
           </div>
         </div>
@@ -130,7 +134,7 @@ export const Navbar = () => {
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="md:hidden overflow-hidden bg-card border-t border-border"
+            className="lg:hidden overflow-hidden bg-card border-t border-border"
           >
             <div className="container mx-auto px-4 py-4 space-y-3">
               {navLinks.map((link) => (
@@ -143,6 +147,18 @@ export const Navbar = () => {
                   {link.label}
                 </Link>
               ))}
+              
+              {/* Mobile Auth Button */}
+              {!user && (
+                <Link
+                  to="/auth"
+                  onClick={() => setIsOpen(false)}
+                  className="block py-2 text-foreground hover:text-primary transition-smooth font-medium sm:hidden"
+                >
+                  Sign In
+                </Link>
+              )}
+              
               <div className="pt-3 border-t border-border flex gap-2">
                 {languages.map((lang) => (
                   <button
