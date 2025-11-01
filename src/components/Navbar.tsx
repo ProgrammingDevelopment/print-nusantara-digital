@@ -2,14 +2,16 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { motion, AnimatePresence } from "framer-motion";
-import { FiMenu, FiX, FiSun, FiMoon, FiShoppingCart } from "react-icons/fi";
+import { FiMenu, FiX, FiSun, FiMoon, FiShoppingCart, FiUser, FiLogOut } from "react-icons/fi";
 import { useTheme } from "./ThemeProvider";
 import { Button } from "./ui/button";
+import { useAuth } from "@/hooks/useAuth";
 
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { t, i18n } = useTranslation();
   const { theme, setTheme } = useTheme();
+  const { user, signOut } = useAuth();
 
   const navLinks = [
     { path: "/", label: t("nav.home") },
@@ -81,12 +83,30 @@ export const Navbar = () => {
             </Button>
 
             {/* Cart */}
-            <Button variant="ghost" size="icon" className="relative">
-              <FiShoppingCart />
-              <span className="absolute -top-1 -right-1 bg-accent text-accent-foreground text-xs rounded-full w-5 h-5 flex items-center justify-center">
-                0
-              </span>
-            </Button>
+            {user && (
+              <Button variant="ghost" size="icon" className="relative" asChild>
+                <Link to="/cart">
+                  <FiShoppingCart />
+                  <span className="absolute -top-1 -right-1 bg-accent text-accent-foreground text-xs rounded-full w-5 h-5 flex items-center justify-center">
+                    0
+                  </span>
+                </Link>
+              </Button>
+            )}
+
+            {/* Auth Actions */}
+            {user ? (
+              <Button variant="ghost" size="icon" onClick={signOut} title="Sign Out">
+                <FiLogOut />
+              </Button>
+            ) : (
+              <Button variant="default" asChild size="sm">
+                <Link to="/auth">
+                  <FiUser className="mr-2" />
+                  Sign In
+                </Link>
+              </Button>
+            )}
 
             {/* Mobile Menu Toggle */}
             <Button
