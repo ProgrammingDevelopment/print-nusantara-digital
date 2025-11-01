@@ -17,6 +17,7 @@ export const Navbar = () => {
     { path: "/", label: t("nav.home") },
     { path: "/about", label: t("nav.about") },
     { path: "/products", label: t("nav.products") },
+    { path: "/international", label: "International" },
     { path: "/contact", label: t("nav.contact") },
     { path: "/join-us", label: t("nav.joinUs") },
   ];
@@ -33,10 +34,10 @@ export const Navbar = () => {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2">
-            <div className="w-10 h-10 gradient-primary rounded-lg flex items-center justify-center">
-              <span className="text-primary-foreground font-bold text-xl">PT</span>
+            <div className="w-10 h-10 bg-foreground/90 rounded-lg flex items-center justify-center">
+              <span className="text-background font-bold text-xl">PT</span>
             </div>
-            <span className="text-xl font-bold gradient-primary bg-clip-text text-transparent">
+            <span className="text-xl font-bold text-foreground">
               PrintThink
             </span>
           </Link>

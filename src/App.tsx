@@ -13,6 +13,7 @@ import About from "./pages/About";
 import Contact from "./pages/Contact";
 import JoinUs from "./pages/JoinUs";
 import Auth from "./pages/Auth";
+import International from "./pages/International";
 import NotFound from "./pages/NotFound";
 import "./i18n/config";
 
@@ -35,6 +36,7 @@ const App = () => (
                 <Route path="/contact" element={<Contact />} />
                 <Route path="/join-us" element={<JoinUs />} />
                 <Route path="/auth" element={<Auth />} />
+                <Route path="/international" element={<International />} />
                 {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
                 <Route path="*" element={<NotFound />} />
               </Routes>

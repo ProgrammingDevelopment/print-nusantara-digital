@@ -134,6 +134,18 @@ export default function ProductsDB() {
           >
             Food Boxes
           </Button>
+          <Button
+            variant={category === "printing" ? "default" : "outline"}
+            onClick={() => setCategory("printing")}
+          >
+            Printing
+          </Button>
+          <Button
+            variant={category === "services" ? "default" : "outline"}
+            onClick={() => setCategory("services")}
+          >
+            Services
+          </Button>
         </motion.div>
 
         {/* Products Grid */}
