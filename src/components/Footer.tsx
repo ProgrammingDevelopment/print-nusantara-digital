@@ -24,12 +24,9 @@ export const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Brand */}
           <div className="space-y-4">
-            <div className="flex items-center space-x-2">
-              <div className="w-10 h-10 gradient-primary rounded-lg flex items-center justify-center">
-                <span className="text-primary-foreground font-bold text-xl">PT</span>
-              </div>
-              <span className="text-xl font-bold gradient-primary bg-clip-text text-transparent">
-                PrintThink
+            <div>
+              <span className="text-2xl font-bold text-foreground">
+                Elka Grafika
               </span>
             </div>
             <p className="text-muted-foreground text-sm">{t("footer.tagline")}</p>

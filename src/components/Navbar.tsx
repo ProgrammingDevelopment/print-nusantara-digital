@@ -34,8 +34,8 @@ export const Navbar = () => {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link to="/" className="flex items-center">
-            <span className="text-xl md:text-2xl font-bold text-foreground">
-              PrintThink
+            <span className="text-xl md:text-2xl font-bold text-foreground hover:text-primary transition-smooth">
+              Elka Grafika
             </span>
           </Link>
 
