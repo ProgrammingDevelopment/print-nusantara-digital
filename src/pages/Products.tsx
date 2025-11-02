@@ -152,19 +152,19 @@ export default function Products() {
           <Label>{t("products.category")}:</Label>
           <div className="flex gap-2">
             <Button
-              variant={category === "all" ? "default" : "outline"}
+              variant={category === "all" ? "secondary" : "ghost"}
               onClick={() => setCategory("all")}
             >
               {t("products.all")}
             </Button>
             <Button
-              variant={category === "softBox" ? "default" : "outline"}
+              variant={category === "softBox" ? "secondary" : "ghost"}
               onClick={() => setCategory("softBox")}
             >
               {t("products.softBox")}
             </Button>
             <Button
-              variant={category === "foodBox" ? "default" : "outline"}
+              variant={category === "foodBox" ? "secondary" : "ghost"}
               onClick={() => setCategory("foodBox")}
             >
               {t("products.foodBox")}
@@ -208,7 +208,7 @@ export default function Products() {
                 <CardFooter>
                   <Button
                     className="w-full"
-                    variant="default"
+                    variant="outline"
                     onClick={() => handleAddToCart(product)}
                   >
                     <FiShoppingCart className="mr-2" />

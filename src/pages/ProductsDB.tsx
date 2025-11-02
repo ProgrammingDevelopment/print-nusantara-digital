@@ -117,31 +117,31 @@ export default function ProductsDB() {
           className="mb-8 flex items-center gap-4 justify-center flex-wrap"
         >
           <Button
-            variant={category === "all" ? "default" : "outline"}
+            variant={category === "all" ? "secondary" : "ghost"}
             onClick={() => setCategory("all")}
           >
             All Products
           </Button>
           <Button
-            variant={category === "softBox" ? "default" : "outline"}
+            variant={category === "softBox" ? "secondary" : "ghost"}
             onClick={() => setCategory("softBox")}
           >
             Soft Boxes
           </Button>
           <Button
-            variant={category === "foodBox" ? "default" : "outline"}
+            variant={category === "foodBox" ? "secondary" : "ghost"}
             onClick={() => setCategory("foodBox")}
           >
             Food Boxes
           </Button>
           <Button
-            variant={category === "printing" ? "default" : "outline"}
+            variant={category === "printing" ? "secondary" : "ghost"}
             onClick={() => setCategory("printing")}
           >
             Printing
           </Button>
           <Button
-            variant={category === "services" ? "default" : "outline"}
+            variant={category === "services" ? "secondary" : "ghost"}
             onClick={() => setCategory("services")}
           >
             Services
@@ -199,7 +199,7 @@ export default function ProductsDB() {
                   <CardFooter>
                     <Button
                       className="w-full"
-                      variant="default"
+                      variant="outline"
                       onClick={() => handleAddToCart(product)}
                       disabled={product.stock === 0}
                     >
