@@ -6,10 +6,18 @@ export default function About() {
   const { t } = useTranslation();
 
   const team = [
-    { name: "Budi Santoso", role: "CEO & Founder", avatar: "👨‍💼" },
-    { name: "Siti Nurhaliza", role: "Production Manager", avatar: "👩‍💼" },
-    { name: "Ahmad Rahman", role: "Design Lead", avatar: "👨‍🎨" },
-    { name: "Dewi Lestari", role: "Quality Control", avatar: "👩‍🔬" },
+    { name: "Bernadus Leomitro", role: "CEO", avatar: "👨‍💼" },
+    { name: "Ahmad", role: "Design Lead", avatar: "👨‍🎨" },
+    { name: "Via", role: "Staff Design", avatar: "👩‍🎨" },
+    { name: "Nur", role: "Quality Control", avatar: "👩‍🔬" },
+    { name: "Ira", role: "Staff Quality Control", avatar: "👩‍🔬" },
+    { name: "Opet", role: "Staff Quality Control", avatar: "👨‍🔬" },
+    { name: "Yani", role: "Admin", avatar: "👩‍💼" },
+    { name: "Fitri", role: "Accounting", avatar: "👩‍💻" },
+    { name: "Mina", role: "PIC Office", avatar: "👨‍💼" },
+    { name: "Siman", role: "PIC Office", avatar: "👨‍💼" },
+    { name: "Amir", role: "PIC Office", avatar: "👨‍💼" },
+    { name: "Adit", role: "PIC Produksi", avatar: "👨‍🏭" },
   ];
 
   return (
@@ -70,7 +78,7 @@ export default function About() {
           transition={{ delay: 0.4 }}
         >
           <h2 className="text-3xl font-bold mb-8 text-center">{t("about.team")}</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             {team.map((member, index) => (
               <motion.div
                 key={index}
