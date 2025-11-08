@@ -14,6 +14,8 @@ import Contact from "./pages/Contact";
 import JoinUs from "./pages/JoinUs";
 import Auth from "./pages/Auth";
 import International from "./pages/International";
+import StyleGuide from "./pages/StyleGuide";
+import BrandGuidelines from "./pages/BrandGuidelines";
 import NotFound from "./pages/NotFound";
 import "./i18n/config";
 
@@ -37,6 +39,8 @@ const App = () => (
                 <Route path="/join-us" element={<JoinUs />} />
                 <Route path="/auth" element={<Auth />} />
                 <Route path="/international" element={<International />} />
+                <Route path="/style-guide" element={<StyleGuide />} />
+                <Route path="/brand-guidelines" element={<BrandGuidelines />} />
                 {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
                 <Route path="*" element={<NotFound />} />
               </Routes>

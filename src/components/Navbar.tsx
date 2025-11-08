@@ -33,8 +33,8 @@ export const Navbar = () => {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <Link to="/" className="flex items-center">
-            <span className="text-xl md:text-2xl font-bold text-foreground hover:text-primary transition-smooth">
+          <Link to="/" className="flex items-center group">
+            <span className="text-xl md:text-2xl font-bold text-foreground group-hover:text-primary transition-smooth group-hover:scale-105 inline-block">
               Elka Grafika
             </span>
           </Link>
