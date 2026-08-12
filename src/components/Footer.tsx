@@ -97,7 +97,7 @@ export const Footer = () => {
                 rel="noopener noreferrer"
                 className="text-sm text-muted-foreground hover:text-primary transition-smooth"
               >
-                {t("footer.research")} →
+                {t("footer.research")} -&gt;
               </a>
             </div>
           </div>

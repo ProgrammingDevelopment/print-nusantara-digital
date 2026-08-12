@@ -6,17 +6,20 @@ import { FiMenu, FiX, FiSun, FiMoon, FiShoppingCart, FiUser, FiLogOut } from "re
 import { useTheme } from "./ThemeProvider";
 import { Button } from "./ui/button";
 import { useAuth } from "@/hooks/useAuth";
+import { useCartSummary } from "@/hooks/useCartSummary";
 
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { t, i18n } = useTranslation();
   const { theme, setTheme } = useTheme();
   const { user, signOut } = useAuth();
+  const { itemCount } = useCartSummary();
 
   const navLinks = [
     { path: "/", label: t("nav.home") },
     { path: "/about", label: t("nav.about") },
     { path: "/products", label: t("nav.products") },
+    { path: "/orders", label: t("nav.myOrders") },
     { path: "/international", label: "International" },
     { path: "/contact", label: t("nav.contact") },
     { path: "/join-us", label: t("nav.joinUs") },
@@ -77,6 +80,7 @@ export const Navbar = () => {
               size="icon"
               onClick={() => setTheme(theme === "light" ? "dark" : "light")}
               className="h-9 w-9"
+              aria-label="Toggle theme"
             >
               {theme === "light" ? <FiMoon className="h-4 w-4" /> : <FiSun className="h-4 w-4" />}
             </Button>
@@ -87,7 +91,7 @@ export const Navbar = () => {
                 <Link to="/cart">
                   <FiShoppingCart className="h-4 w-4" />
                   <span className="absolute -top-1 -right-1 bg-accent text-accent-foreground text-xs rounded-full w-5 h-5 flex items-center justify-center">
-                    0
+                    {itemCount}
                   </span>
                 </Link>
               </Button>
@@ -119,6 +123,7 @@ export const Navbar = () => {
               size="icon"
               className="lg:hidden h-9 w-9"
               onClick={() => setIsOpen(!isOpen)}
+              aria-label="Toggle navigation menu"
             >
               {isOpen ? <FiX className="h-5 w-5" /> : <FiMenu className="h-5 w-5" />}
             </Button>

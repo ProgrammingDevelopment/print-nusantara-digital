@@ -42,9 +42,11 @@
     "title": "Product Catalog",
     "filter": "Filter",
     "category": "Category",
-    "all": "All",
+    "all": "All Products",
     "softBox": "Soft Box",
     "foodBox": "Food Box",
+    "printing": "Printing",
+    "services": "Services",
     "calculator": "Price Calculator",
     "quantity": "Quantity",
     "size": "Size",
@@ -96,7 +98,7 @@
     "quickLinks": "Quick Links",
     "followUs": "Follow Us",
     "research": "Our Research",
-    "rights": "© 2025 CV Elka Grafika. Built with ❤️ for Indonesian businesses. All rights reserved."
+    "rights": "(c) 2025 CV Elka Grafika. Built with care for Indonesian businesses. All rights reserved."
   },
   "common": {
     "loading": "Loading...",

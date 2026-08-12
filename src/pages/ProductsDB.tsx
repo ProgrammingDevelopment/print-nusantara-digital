@@ -1,14 +1,26 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { supabase } from "@/integrations/supabase/client";
-import { useAuth } from "@/hooks/useAuth";
+import { FiPackage, FiShoppingCart } from "react-icons/fi";
 import { toast } from "sonner";
-import { FiShoppingCart } from "react-icons/fi";
+import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { PRODUCT_CATEGORIES, isHttpImageUrl } from "@/constants/products";
+import { supabase } from "@/integrations/supabase/client";
 import type { Tables } from "@/integrations/supabase/types";
+import { useAuth } from "@/hooks/useAuth";
+import { CART_UPDATED_EVENT } from "@/hooks/useCartSummary";
+import { buildQueryString, fetchJson } from "@/lib/api";
+import { getErrorMessage } from "@/lib/errors";
+import { formatCurrencyIDR } from "@/lib/format";
 
 type Product = Tables<"products">;
 
@@ -21,24 +33,38 @@ export default function ProductsDB() {
   const [category, setCategory] = useState("all");
 
   useEffect(() => {
-    fetchProducts();
-  }, []);
+    const controller = new AbortController();
 
-  const fetchProducts = async () => {
-    try {
-      const { data, error } = await supabase
-        .from("products")
-        .select("*")
-        .order("created_at", { ascending: false });
+    const fetchProducts = async () => {
+      setLoading(true);
+      try {
+        const queryString = buildQueryString({
+          category,
+          limit: 24,
+          offset: 0,
+        });
+        const response = await fetchJson<Product[]>(`/api/products${queryString}`, {
+          signal: controller.signal,
+        });
 
-      if (error) throw error;
-      setProducts(data || []);
-    } catch (error: any) {
-      toast.error("Failed to load products");
-    } finally {
-      setLoading(false);
-    }
-  };
+        setProducts(response.data);
+      } catch (error) {
+        if (error instanceof DOMException && error.name === "AbortError") {
+          return;
+        }
+
+        toast.error(getErrorMessage(error, "Failed to load products"));
+      } finally {
+        if (!controller.signal.aborted) {
+          setLoading(false);
+        }
+      }
+    };
+
+    void fetchProducts();
+
+    return () => controller.abort();
+  }, [category]);
 
   const handleAddToCart = async (product: Product) => {
     if (!user) {
@@ -48,16 +74,16 @@ export default function ProductsDB() {
     }
 
     try {
-      // Check if item already in cart
-      const { data: existingItem } = await supabase
+      const { data: existingItem, error: existingItemError } = await supabase
         .from("cart_items")
         .select("*")
         .eq("user_id", user.id)
         .eq("product_id", product.id)
         .maybeSingle();
 
+      if (existingItemError) throw existingItemError;
+
       if (existingItem) {
-        // Update quantity
         const { error } = await supabase
           .from("cart_items")
           .update({ quantity: existingItem.quantity + 1 })
@@ -65,34 +91,28 @@ export default function ProductsDB() {
 
         if (error) throw error;
       } else {
-        // Add new item
-        const { error } = await supabase
-          .from("cart_items")
-          .insert({
-            user_id: user.id,
-            product_id: product.id,
-            quantity: 1,
-          });
+        const { error } = await supabase.from("cart_items").insert({
+          user_id: user.id,
+          product_id: product.id,
+          quantity: 1,
+        });
 
         if (error) throw error;
       }
 
+      window.dispatchEvent(new Event(CART_UPDATED_EVENT));
       toast.success(`${product.name} added to cart!`);
-    } catch (error: any) {
-      toast.error("Failed to add to cart");
+    } catch (error) {
+      toast.error(getErrorMessage(error, "Failed to add to cart"));
     }
   };
-
-  const filteredProducts = category === "all" 
-    ? products 
-    : products.filter(p => p.category === category);
 
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto mb-4"></div>
-          <p className="text-muted-foreground">Loading products...</p>
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto mb-4" />
+          <p className="text-muted-foreground">{t("common.loading")}</p>
         </div>
       </div>
     );
@@ -106,56 +126,33 @@ export default function ProductsDB() {
           animate={{ opacity: 1, y: 0 }}
           className="text-center mb-12"
         >
-          <h1 className="text-5xl font-bold mb-4">{t("products.title")}</h1>
+          <h1 className="text-4xl md:text-5xl font-bold mb-4">{t("products.title")}</h1>
         </motion.div>
 
-        {/* Filter */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
-          className="mb-8 flex items-center gap-4 justify-center flex-wrap"
+          className="mb-8 flex items-center gap-3 justify-center flex-wrap"
         >
-          <Button
-            variant={category === "all" ? "secondary" : "ghost"}
-            onClick={() => setCategory("all")}
-          >
-            All Products
-          </Button>
-          <Button
-            variant={category === "softBox" ? "secondary" : "ghost"}
-            onClick={() => setCategory("softBox")}
-          >
-            Soft Boxes
-          </Button>
-          <Button
-            variant={category === "foodBox" ? "secondary" : "ghost"}
-            onClick={() => setCategory("foodBox")}
-          >
-            Food Boxes
-          </Button>
-          <Button
-            variant={category === "printing" ? "secondary" : "ghost"}
-            onClick={() => setCategory("printing")}
-          >
-            Printing
-          </Button>
-          <Button
-            variant={category === "services" ? "secondary" : "ghost"}
-            onClick={() => setCategory("services")}
-          >
-            Services
-          </Button>
+          {PRODUCT_CATEGORIES.map((productCategory) => (
+            <Button
+              key={productCategory.value}
+              variant={category === productCategory.value ? "secondary" : "ghost"}
+              onClick={() => setCategory(productCategory.value)}
+            >
+              {t(productCategory.labelKey)}
+            </Button>
+          ))}
         </motion.div>
 
-        {/* Products Grid */}
-        {filteredProducts.length === 0 ? (
+        {products.length === 0 ? (
           <div className="text-center py-12">
             <p className="text-muted-foreground text-lg">No products found</p>
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {filteredProducts.map((product, index) => (
+            {products.map((product, index) => (
               <motion.div
                 key={product.id}
                 initial={{ opacity: 0, y: 20 }}
@@ -164,17 +161,17 @@ export default function ProductsDB() {
               >
                 <Card className="h-full hover:shadow-elegant transition-smooth">
                   <CardHeader>
-                    {product.image_url ? (
+                    {isHttpImageUrl(product.image_url) ? (
                       <div className="w-full h-48 bg-secondary/50 rounded-lg overflow-hidden mb-4">
-                        <img 
-                          src={product.image_url} 
+                        <img
+                          src={product.image_url ?? ""}
                           alt={product.name}
                           className="w-full h-full object-cover"
                         />
                       </div>
                     ) : (
                       <div className="w-full h-48 bg-secondary/50 rounded-lg flex items-center justify-center mb-4">
-                        <span className="text-6xl">📦</span>
+                        <FiPackage className="h-16 w-16 text-primary" />
                       </div>
                     )}
                     <CardTitle>{product.name}</CardTitle>
@@ -182,10 +179,10 @@ export default function ProductsDB() {
                   </CardHeader>
                   <CardContent>
                     <div className="space-y-2">
-                      <div className="flex justify-between items-center">
+                      <div className="flex justify-between items-center gap-4">
                         <span className="text-muted-foreground">Price:</span>
-                        <span className="text-xl font-bold gradient-primary bg-clip-text text-transparent">
-                          IDR {product.price.toLocaleString('id-ID')}
+                        <span className="text-xl font-bold text-primary">
+                          {formatCurrencyIDR(product.price)}
                         </span>
                       </div>
                       <div className="flex justify-between items-center">
@@ -204,7 +201,7 @@ export default function ProductsDB() {
                       disabled={product.stock === 0}
                     >
                       <FiShoppingCart className="mr-2" />
-                      {product.stock === 0 ? "Out of Stock" : "Add to Cart"}
+                      {product.stock === 0 ? "Out of Stock" : t("products.addToCart")}
                     </Button>
                   </CardFooter>
                 </Card>

@@ -12,7 +12,7 @@
   },
   "hero": {
     "title": "胶印与数码印刷专家",
-    "subtitle": "为印度尼西亚的中小企业和企业提供专业印刷解决方案。高质量，有竞争力的价格，内部生产。",
+    "subtitle": "为印度尼西亚中小企业和品牌提供专业印刷解决方案。高质量、有竞争力的价格、内部生产。",
     "cta1": "浏览产品",
     "cta2": "免费咨询"
   },
@@ -20,15 +20,15 @@
     "title": "为什么选择我们？",
     "inHouse": {
       "title": "内部生产",
-      "desc": "现代化生产设施，实现最大质量控制"
+      "desc": "现代化生产设施，实现稳定质量控制"
     },
     "expert": {
       "title": "专业团队",
-      "desc": "拥有国际认证的经验丰富的操作员"
+      "desc": "经验丰富的操作人员与成熟生产流程"
     },
     "quality": {
-      "title": "高质量",
-      "desc": "优质材料和最新印刷技术"
+      "title": "高品质",
+      "desc": "优质材料和先进印刷技术"
     },
     "sustainability": {
       "title": "环保",
@@ -36,46 +36,48 @@
     }
   },
   "testimonials": {
-    "title": "领先品牌的信赖之选"
+    "title": "受到领先品牌信赖"
   },
   "products": {
     "title": "产品目录",
-    "filter": "过滤",
+    "filter": "筛选",
     "category": "类别",
-    "all": "全部",
+    "all": "全部产品",
     "softBox": "软盒",
     "foodBox": "食品盒",
+    "printing": "印刷",
+    "services": "服务",
     "calculator": "价格计算器",
     "quantity": "数量",
     "size": "尺寸",
     "material": "材料",
-    "estimate": "估计",
+    "estimate": "估算",
     "addToCart": "加入购物车",
     "viewDetails": "查看详情"
   },
   "cart": {
     "title": "购物车",
-    "empty": "购物车是空的",
+    "empty": "购物车为空",
     "total": "总计",
     "checkout": "结账",
     "continueShopping": "继续购物"
   },
   "about": {
-    "title": "关于CV Elka Grafika",
-    "subtitle": "您值得信赖的印刷解决方案合作伙伴",
+    "title": "关于 CV Elka Grafika",
+    "subtitle": "值得信赖的印刷解决方案合作伙伴",
     "history": "我们的历史",
-    "historyText": "CV Elka Grafika成立于2010年，旨在为印度尼西亚的中小企业提供高质量的印刷服务。凭借超过13年的经验，我们已为来自各行各业的数千名客户提供服务。",
+    "historyText": "CV Elka Grafika 成立于 2010 年，致力于为印度尼西亚中小企业提供高质量印刷服务。凭借多年经验，我们已服务来自多个行业的客户。",
     "vision": "愿景与使命",
-    "visionText": "成为印度尼西亚印刷行业的领导者，专注于质量、创新和环境可持续性。",
+    "visionText": "成为印度尼西亚印刷行业的领先企业，专注于质量、创新和环境可持续性。",
     "team": "我们的团队"
   },
   "contact": {
     "title": "联系我们",
-    "subtitle": "随时为您的印刷需求提供帮助",
+    "subtitle": "随时帮助满足您的印刷需求",
     "name": "姓名",
     "email": "电子邮件",
     "message": "信息",
-    "send": "发送消息",
+    "send": "发送信息",
     "factories": "工厂位置",
     "factory1": "雅加达 - Jalan Jelambar Raya",
     "factory2": "坦格朗 - Komplek Pergudangan Balaraja",
@@ -83,20 +85,20 @@
   },
   "joinUs": {
     "title": "加入我们的团队",
-    "subtitle": "与CV Elka Grafika一起在印刷行业建立您的职业生涯",
-    "openPositions": "职位空缺",
+    "subtitle": "与 CV Elka Grafika 一起在印刷行业发展职业生涯",
+    "openPositions": "开放职位",
     "apply": "立即申请",
     "designer": "平面设计师",
-    "designerDesc": "寻找具有至少2年经验的创意设计师",
+    "designerDesc": "寻找具有至少 2 年经验的创意设计师",
     "manager": "生产经理",
-    "managerDesc": "领导生产团队，至少5年经验"
+    "managerDesc": "领导生产团队，需至少 5 年经验"
   },
   "footer": {
     "tagline": "为您的企业提供专业印刷解决方案",
     "quickLinks": "快速链接",
     "followUs": "关注我们",
     "research": "我们的研究",
-    "rights": "© 2025 CV Elka Grafika. 为印度尼西亚企业倾情打造。版权所有。"
+    "rights": "(c) 2025 CV Elka Grafika. 为印度尼西亚企业用心打造。版权所有。"
   },
   "common": {
     "loading": "加载中...",

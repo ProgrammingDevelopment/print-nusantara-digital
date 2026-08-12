@@ -42,9 +42,11 @@
     "title": "Katalog Produk",
     "filter": "Filter",
     "category": "Kategori",
-    "all": "Semua",
+    "all": "Semua Produk",
     "softBox": "Soft Box",
     "foodBox": "Food Box",
+    "printing": "Printing",
+    "services": "Layanan",
     "calculator": "Kalkulator Harga",
     "quantity": "Jumlah",
     "size": "Ukuran",
@@ -96,7 +98,7 @@
     "quickLinks": "Tautan Cepat",
     "followUs": "Ikuti Kami",
     "research": "Riset Kami",
-    "rights": "© 2025 CV Elka Grafika. Dibangun dengan ❤️ untuk bisnis Indonesia. Hak cipta dilindungi."
+    "rights": "(c) 2025 CV Elka Grafika. Dibangun dengan kepedulian untuk bisnis Indonesia. Hak cipta dilindungi."
   },
   "common": {
     "loading": "Memuat...",

@@ -5,9 +5,12 @@ import { Badge } from "@/components/ui/badge";
 import { useTheme } from "@/components/ThemeProvider";
 import { FiSun, FiMoon, FiCheck, FiX, FiInfo } from "react-icons/fi";
 
+type StyleGuideTab = "buttons" | "cards" | "typography" | "colors";
+const STYLE_GUIDE_TABS: StyleGuideTab[] = ["buttons", "cards", "typography", "colors"];
+
 const StyleGuide = () => {
   const { theme, setTheme } = useTheme();
-  const [activeTab, setActiveTab] = useState<"buttons" | "cards" | "typography" | "colors">("buttons");
+  const [activeTab, setActiveTab] = useState<StyleGuideTab>("buttons");
 
   return (
     <div className="min-h-screen bg-background py-12">
@@ -45,11 +48,11 @@ const StyleGuide = () => {
 
         {/* Tabs */}
         <div className="flex flex-wrap justify-center gap-2 mb-8">
-          {["buttons", "cards", "typography", "colors"].map((tab) => (
+          {STYLE_GUIDE_TABS.map((tab) => (
             <Button
               key={tab}
               variant={activeTab === tab ? "default" : "outline"}
-              onClick={() => setActiveTab(tab as any)}
+              onClick={() => setActiveTab(tab)}
               className="capitalize"
             >
               {tab}

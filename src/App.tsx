@@ -7,13 +7,14 @@ import { ThemeProvider } from "./components/ThemeProvider";
 import { Navbar } from "./components/Navbar";
 import { Footer } from "./components/Footer";
 import Home from "./pages/Home";
-import Products from "./pages/Products";
 import ProductsDB from "./pages/ProductsDB";
+import Cart from "./pages/Cart";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import JoinUs from "./pages/JoinUs";
 import Auth from "./pages/Auth";
 import International from "./pages/International";
+import Orders from "./pages/Orders";
 import StyleGuide from "./pages/StyleGuide";
 import BrandGuidelines from "./pages/BrandGuidelines";
 import NotFound from "./pages/NotFound";
@@ -34,10 +35,12 @@ const App = () => (
               <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/products" element={<ProductsDB />} />
+                <Route path="/cart" element={<Cart />} />
                 <Route path="/about" element={<About />} />
                 <Route path="/contact" element={<Contact />} />
                 <Route path="/join-us" element={<JoinUs />} />
                 <Route path="/auth" element={<Auth />} />
+                <Route path="/orders" element={<Orders />} />
                 <Route path="/international" element={<International />} />
                 <Route path="/style-guide" element={<StyleGuide />} />
                 <Route path="/brand-guidelines" element={<BrandGuidelines />} />

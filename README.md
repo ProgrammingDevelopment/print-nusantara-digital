@@ -60,6 +60,33 @@ This project is built with:
 - shadcn-ui
 - Tailwind CSS
 
+## Vercel API, Webhooks, and SSE
+
+This repo now includes Vercel serverless endpoints under `api/`:
+
+- `GET /api/products` lists products with `category`, `search`, `limit`, and `offset` query params.
+- `POST|PUT|PATCH|DELETE /api/products` performs admin CRUD with `X-Admin-Token` or `Authorization: Bearer <ADMIN_API_TOKEN>`.
+- `GET|POST|PUT|PATCH|DELETE /api/orders` performs admin order CRUD and uses nested Supabase selects to avoid N+1 queries.
+- `POST /api/webhooks/supabase` accepts Supabase/webhook payloads with `X-Webhook-Token` or bearer auth, then publishes an SSE event.
+- `GET /api/events` opens a Server-Sent Events stream with heartbeat support.
+
+Set these environment variables in Vercel:
+
+- `SUPABASE_URL`
+- `SUPABASE_PUBLISHABLE_KEY`
+- `SUPABASE_SERVICE_ROLE_KEY`
+- `ADMIN_API_TOKEN`
+- `WEBHOOK_SECRET`
+- Optional: `EVENTS_CLIENT_TOKEN` and matching `VITE_EVENTS_CLIENT_TOKEN`
+
+Complexity notes:
+
+- Product list reads are `O(pageSize)` because filtering and pagination happen at the endpoint.
+- Order reads are `O(orders + orderItems)` in a single nested Supabase query, avoiding N+1 loops.
+- Order item creation is batched in one insert, so checkout does not insert items one request at a time.
+
+The SSE bus is dependency-free and suitable for simple Vercel deployments. For multi-region or high-volume production fanout, replace the in-memory bus in `api/_lib/event-bus.ts` with a durable pub/sub service such as Upstash Redis while keeping the same `/api/events` contract.
+
 ## How can I deploy this project?
 
 Simply open [Lovable](https://lovable.dev/projects/722ff7c4-8d63-43fa-a1c8-0142728f4af5) and click on Share -> Publish.

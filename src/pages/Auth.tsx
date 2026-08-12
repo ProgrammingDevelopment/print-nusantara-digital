@@ -10,6 +10,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 import { z } from "zod";
+import { getErrorMessage } from "@/lib/errors";
 
 const emailSchema = z.string().email("Invalid email format");
 const passwordSchema = z.string().min(6, "Password must be at least 6 characters");
@@ -73,8 +74,8 @@ export default function Auth() {
       setEmail("");
       setPassword("");
       setFullName("");
-    } catch (error: any) {
-      toast.error(error.message || "Failed to sign up");
+    } catch (error) {
+      toast.error(getErrorMessage(error, "Failed to sign up"));
     } finally {
       setLoading(false);
     }
@@ -95,8 +96,8 @@ export default function Auth() {
 
       toast.success("Logged in successfully!");
       navigate("/");
-    } catch (error: any) {
-      toast.error(error.message || "Failed to sign in");
+    } catch (error) {
+      toast.error(getErrorMessage(error, "Failed to sign in"));
     } finally {
       setLoading(false);
     }
