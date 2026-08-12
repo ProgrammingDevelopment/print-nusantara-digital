@@ -11,9 +11,11 @@ import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 import { z } from "zod";
 import { getErrorMessage } from "@/lib/errors";
+import { createDummySession } from "@/lib/dummy-auth";
 
 const emailSchema = z.string().email("Invalid email format");
 const passwordSchema = z.string().min(6, "Password must be at least 6 characters");
+const useDummyAuth = import.meta.env.VITE_USE_DUMMY_AUTH === "true";
 
 export default function Auth() {
   const { t } = useTranslation();
@@ -56,6 +58,14 @@ export default function Auth() {
 
     setLoading(true);
     try {
+      if (useDummyAuth) {
+        const dummySession = createDummySession(email, fullName);
+        await supabase.auth.setSession(dummySession);
+        toast.success("Dummy account created and signed in.");
+        navigate("/");
+        return;
+      }
+
       const response = await fetch("/api/auth/signup", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -80,6 +90,13 @@ export default function Auth() {
       setFullName("");
       navigate("/");
     } catch (error) {
+      if (!useDummyAuth) {
+        const dummySession = createDummySession(email, fullName);
+        await supabase.auth.setSession(dummySession);
+        toast.success("Signup failed, but dummy account was created for now.");
+        navigate("/");
+        return;
+      }
       toast.error(getErrorMessage(error, "Failed to sign up"));
     } finally {
       setLoading(false);
@@ -92,6 +109,14 @@ export default function Auth() {
 
     setLoading(true);
     try {
+      if (useDummyAuth) {
+        const dummySession = createDummySession(email);
+        await supabase.auth.setSession(dummySession);
+        toast.success("Logged in with dummy credentials.");
+        navigate("/");
+        return;
+      }
+
       const response = await fetch("/api/auth/signin", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -112,6 +137,13 @@ export default function Auth() {
       setPassword("");
       navigate("/");
     } catch (error) {
+      if (!useDummyAuth) {
+        const dummySession = createDummySession(email);
+        await supabase.auth.setSession(dummySession);
+        toast.success("Sign in failed, but dummy credentials were used.");
+        navigate("/");
+        return;
+      }
       toast.error(getErrorMessage(error, "Failed to sign in"));
     } finally {
       setLoading(false);

@@ -1,14 +1,33 @@
 export type RegionEndpoint = {
   region: string;
+  area?: string;
   url: string;
   lat: number;
   lon: number;
 };
 
 const DEFAULT_REGIONS: RegionEndpoint[] = [
-  { region: "asia-southeast1", url: window.location.origin, lat: -6.2, lon: 106.8 },
-  { region: "us-central1", url: window.location.origin, lat: 39.0, lon: -98.0 },
-  { region: "europe-west1", url: window.location.origin, lat: 50.0, lon: 8.0 },
+  {
+    region: "asia-southeast1",
+    area: "South East Asia",
+    url: window.location.origin,
+    lat: -6.2,
+    lon: 106.8,
+  },
+  {
+    region: "us-central1",
+    area: "North America",
+    url: window.location.origin,
+    lat: 39.0,
+    lon: -98.0,
+  },
+  {
+    region: "europe-west1",
+    area: "Europe",
+    url: window.location.origin,
+    lat: 50.0,
+    lon: 8.0,
+  },
 ];
 
 const toRadians = (degrees: number) => (degrees * Math.PI) / 180;
@@ -38,6 +57,12 @@ const parseRegions = (): RegionEndpoint[] => {
   } catch {
     return DEFAULT_REGIONS;
   }
+};
+
+const getPreferredRegion = (regions: RegionEndpoint[]) => {
+  const preferred = import.meta.env.VITE_API_REGION?.trim();
+  if (!preferred) return null;
+  return regions.find((region) => region.region === preferred || region.area === preferred) ?? null;
 };
 
 const getUserLocation = async (): Promise<{ lat: number; lon: number } | null> => {
@@ -76,8 +101,12 @@ const chooseNearestRegion = (
 
 export const getNearestApiBaseUrl = async (): Promise<string> => {
   const regions = parseRegions();
-  const location = await getUserLocation();
+  const preferredRegion = getPreferredRegion(regions);
+  if (preferredRegion) {
+    return preferredRegion.url;
+  }
 
+  const location = await getUserLocation();
   if (!location) {
     return window.location.origin;
   }

@@ -144,6 +144,39 @@ Optional:
 - `EVENTS_CLIENT_TOKEN`
 - `VITE_EVENTS_CLIENT_TOKEN`
 - `VITE_API_REGIONS`
+- `VITE_API_REGION` (override by region name or area)
+
+### Example VITE_API_REGIONS
+
+```env
+VITE_API_REGIONS=[
+  {
+    "region": "asia-southeast1",
+    "area": "South East Asia",
+    "url": "https://asia.elka-grafika-printing.com",
+    "lat": -6.2,
+    "lon": 106.8
+  },
+  {
+    "region": "europe-west1",
+    "area": "Europe",
+    "url": "https://eu.elka-grafika-printing.com",
+    "lat": 50.0,
+    "lon": 8.0
+  },
+  {
+    "region": "us-central1",
+    "area": "North America",
+    "url": "https://us.elka-grafika-printing.com",
+    "lat": 39.0,
+    "lon": -98.0
+  }
+]
+```
+
+```env
+VITE_API_REGION=asia-southeast1
+```
 
 ## Package Name Update
 
