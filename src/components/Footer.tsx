@@ -67,24 +67,28 @@ export const Footer = () => {
             <div className="flex space-x-3">
               <a
                 href="#"
+                aria-label="Facebook"
                 className="w-10 h-10 bg-secondary rounded-lg flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-smooth"
               >
                 <FiFacebook />
               </a>
               <a
                 href="#"
+                aria-label="Instagram"
                 className="w-10 h-10 bg-secondary rounded-lg flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-smooth"
               >
                 <FiInstagram />
               </a>
               <a
                 href="#"
+                aria-label="LinkedIn"
                 className="w-10 h-10 bg-secondary rounded-lg flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-smooth"
               >
                 <FiLinkedin />
               </a>
               <a
                 href="#"
+                aria-label="Twitter"
                 className="w-10 h-10 bg-secondary rounded-lg flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-smooth"
               >
                 <FiTwitter />
