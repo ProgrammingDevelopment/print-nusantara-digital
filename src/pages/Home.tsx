@@ -43,13 +43,14 @@ export default function Home() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative h-[600px] flex items-center overflow-hidden">
-        <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{
-            backgroundImage: `url(${heroImage})`,
-          }}
-        >
+      <section className="relative min-h-[70vh] md:min-h-[600px] flex items-center overflow-hidden">
+        <div className="absolute inset-0">
+          <img
+            src={heroImage}
+            alt="PrintThink printing facility"
+            className="h-full w-full object-cover"
+            loading="eager"
+          />
           <div className="absolute inset-0 bg-gradient-to-r from-background/95 via-background/80 to-background/60" />
         </div>
 
@@ -157,6 +158,7 @@ export default function Home() {
                 src={productsImage}
                 alt="Products showcase"
                 className="w-full h-auto"
+                loading="lazy"
               />
             </motion.div>
           </div>
