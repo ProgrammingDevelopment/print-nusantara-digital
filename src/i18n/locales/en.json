@@ -100,6 +100,18 @@
     "research": "Our Research",
     "rights": "(c) 2025 CV Elka Grafika. Built with care for Indonesian businesses. All rights reserved."
   },
+  "profile": {
+    "title": "Profile Settings",
+    "subtitle": "Update your personal details for faster checkout and better service.",
+    "details": "Profile Details",
+    "updateDesc": "Keep your address and contact information current.",
+    "fullName": "Full Name",
+    "phone": "Phone Number",
+    "address": "Address",
+    "city": "City",
+    "save": "Save Profile",
+    "saving": "Saving..."
+  },
   "common": {
     "loading": "Loading...",
     "error": "An error occurred",

@@ -100,6 +100,18 @@
     "research": "Riset Kami",
     "rights": "(c) 2025 CV Elka Grafika. Dibangun dengan kepedulian untuk bisnis Indonesia. Hak cipta dilindungi."
   },
+  "profile": {
+    "title": "Pengaturan Profil",
+    "subtitle": "Perbarui data pribadi Anda untuk checkout yang lebih cepat dan layanan yang lebih baik.",
+    "details": "Detail Profil",
+    "updateDesc": "Pastikan alamat dan kontak Anda selalu terbaru.",
+    "fullName": "Nama Lengkap",
+    "phone": "Nomor Telepon",
+    "address": "Alamat",
+    "city": "Kota",
+    "save": "Simpan Profil",
+    "saving": "Menyimpan..."
+  },
   "common": {
     "loading": "Memuat...",
     "error": "Terjadi kesalahan",

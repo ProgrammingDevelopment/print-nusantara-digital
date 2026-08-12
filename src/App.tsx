@@ -15,6 +15,7 @@ import JoinUs from "./pages/JoinUs";
 import Auth from "./pages/Auth";
 import International from "./pages/International";
 import Orders from "./pages/Orders";
+import Profile from "./pages/Profile";
 import StyleGuide from "./pages/StyleGuide";
 import BrandGuidelines from "./pages/BrandGuidelines";
 import NotFound from "./pages/NotFound";
@@ -40,6 +41,7 @@ const App = () => (
                 <Route path="/contact" element={<Contact />} />
                 <Route path="/join-us" element={<JoinUs />} />
                 <Route path="/auth" element={<Auth />} />
+                <Route path="/profile" element={<Profile />} />
                 <Route path="/orders" element={<Orders />} />
                 <Route path="/international" element={<International />} />
                 <Route path="/style-guide" element={<StyleGuide />} />

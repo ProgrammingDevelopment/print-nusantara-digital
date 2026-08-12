@@ -53,6 +53,14 @@ export const Navbar = () => {
                 {link.label}
               </Link>
             ))}
+            {user && (
+              <Link
+                to="/profile"
+                className="text-foreground hover:text-primary transition-smooth font-medium text-sm xl:text-base whitespace-nowrap"
+              >
+                {t("nav.profile")}
+              </Link>
+            )}
           </div>
 
           {/* Right Actions */}
@@ -152,6 +160,15 @@ export const Navbar = () => {
                   {link.label}
                 </Link>
               ))}
+              {user && (
+                <Link
+                  to="/profile"
+                  onClick={() => setIsOpen(false)}
+                  className="block py-2 text-foreground hover:text-primary transition-smooth font-medium"
+                >
+                  {t("nav.profile")}
+                </Link>
+              )}
               
               {/* Mobile Auth Button */}
               {!user && (

@@ -100,6 +100,18 @@
     "research": "我们的研究",
     "rights": "(c) 2025 CV Elka Grafika. 为印度尼西亚企业用心打造。版权所有。"
   },
+  "profile": {
+    "title": "个人资料设置",
+    "subtitle": "更新您的个人信息，以便更快结账并获得更优质服务。",
+    "details": "个人资料详情",
+    "updateDesc": "保持地址和联系方式最新。",
+    "fullName": "全名",
+    "phone": "电话号码",
+    "address": "地址",
+    "city": "城市",
+    "save": "保存个人资料",
+    "saving": "正在保存..."
+  },
   "common": {
     "loading": "加载中...",
     "error": "发生错误",

@@ -32,6 +32,21 @@ const handler: ApiHandler = async (request, response) => {
     });
 
     if (error) throw error;
+    if (!data.user?.id) {
+      throw new Error("Unable to create user record");
+    }
+
+    const { error: profileError } = await supabase.from("profiles").insert({
+      id: data.user.id,
+      full_name: body.fullName,
+    });
+
+    if (profileError) {
+      await supabase.auth.admin.deleteUser(data.user.id).catch(() => {
+        // Best-effort cleanup if profile creation fails.
+      });
+      throw profileError;
+    }
 
     sendJson(response, 200, {
       data: {

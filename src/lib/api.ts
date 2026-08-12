@@ -1,4 +1,5 @@
 import { getErrorMessage } from "@/lib/errors";
+import { getApiUrl } from "@/lib/load-balancer";
 
 type ApiEnvelope<TData> = {
   data: TData;
@@ -12,7 +13,12 @@ export async function fetchJson<TData>(
   input: RequestInfo | URL,
   init?: RequestInit,
 ) {
-  const response = await fetch(input, {
+  const resolvedInput =
+    typeof input === "string" && input.startsWith("/") && import.meta.env.VITE_API_REGIONS
+      ? await getApiUrl(input)
+      : input;
+
+  const response = await fetch(resolvedInput, {
     headers: {
       "Content-Type": "application/json",
       ...init?.headers,
