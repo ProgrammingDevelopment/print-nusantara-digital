@@ -61,6 +61,22 @@ export default function Contact() {
 
   return (
     <div className="min-h-screen py-12">
+      <Seo
+        title="Contact Elka Grafika — Printing Quotes Indonesia"
+        description="Contact CV Elka Grafika for printing and custom packaging quotes. Three factory locations across Indonesia."
+        path="/contact"
+        jsonLd={{
+          "@context": "https://schema.org",
+          "@type": "LocalBusiness",
+          name: "CV Elka Grafika",
+          url: "https://elka-printing.lovable.app/contact",
+          image: "https://elka-printing.lovable.app/icons/icon-512.png",
+          description:
+            "Offset and digital printing company producing custom packaging, soft boxes and food boxes in Indonesia.",
+          areaServed: "Indonesia",
+          address: { "@type": "PostalAddress", addressCountry: "ID" },
+        }}
+      />
       <div className="container mx-auto px-4">
         {/* Header */}
         <motion.div

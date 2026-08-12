@@ -22,6 +22,11 @@ export default function About() {
 
   return (
     <div className="min-h-screen py-12">
+      <Seo
+        title="About CV Elka Grafika — Printing Specialists"
+        description="Learn how CV Elka Grafika serves Indonesian brands with in-house offset and digital printing across three factory locations."
+        path="/about"
+      />
       <div className="container mx-auto px-4">
         {/* Header */}
         <motion.div
