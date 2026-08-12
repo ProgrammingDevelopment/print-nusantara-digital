@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
@@ -17,6 +17,9 @@ const passwordSchema = z.string().min(6, "Password must be at least 6 characters
 export default function Auth() {
   const { t } = useTranslation();
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
+  const rawNext = searchParams.get("next") ?? "";
+  const nextPath = rawNext.startsWith("/") && !rawNext.startsWith("//") ? rawNext : "/";
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [fullName, setFullName] = useState("");
@@ -26,10 +29,11 @@ export default function Auth() {
     // Check if user is already logged in
     supabase.auth.getSession().then(({ data: { session } }) => {
       if (session) {
-        navigate("/");
+        if (nextPath === "/") navigate("/");
+        else window.location.href = nextPath;
       }
     });
-  }, [navigate]);
+  }, [navigate, nextPath]);
 
   const validateInputs = (requireName = false) => {
     try {
@@ -55,7 +59,7 @@ export default function Auth() {
 
     setLoading(true);
     try {
-      const redirectUrl = `${window.location.origin}/`;
+      const redirectUrl = `${window.location.origin}${nextPath}`;
       const { error } = await supabase.auth.signUp({
         email,
         password,
@@ -94,7 +98,8 @@ export default function Auth() {
       if (error) throw error;
 
       toast.success("Logged in successfully!");
-      navigate("/");
+      if (nextPath === "/") navigate("/");
+      else window.location.href = nextPath;
     } catch (error: any) {
       toast.error(error.message || "Failed to sign in");
     } finally {
