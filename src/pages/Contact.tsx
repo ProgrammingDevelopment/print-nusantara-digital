@@ -8,6 +8,17 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { toast } from "sonner";
 import { FiMail, FiMapPin, FiPhone } from "react-icons/fi";
+import { z } from "zod";
+
+const contactSchema = z.object({
+  name: z.string().trim().min(1, "Name is required").max(100, "Name must be less than 100 characters"),
+  email: z.string().trim().email("Invalid email address").max(255, "Email must be less than 255 characters"),
+  message: z
+    .string()
+    .trim()
+    .min(10, "Message must be at least 10 characters")
+    .max(2000, "Message must be less than 2000 characters"),
+});
 
 export default function Contact() {
   const { t } = useTranslation();
@@ -19,6 +30,11 @@ export default function Contact() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    const result = contactSchema.safeParse(formData);
+    if (!result.success) {
+      toast.error(result.error.issues[0].message);
+      return;
+    }
     toast.success("Message sent successfully!", {
       description: "We'll get back to you soon.",
     });
@@ -74,6 +90,7 @@ export default function Contact() {
                     <Label htmlFor="name">{t("contact.name")}</Label>
                     <Input
                       id="name"
+                      maxLength={100}
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                       required
@@ -84,6 +101,7 @@ export default function Contact() {
                     <Input
                       id="email"
                       type="email"
+                      maxLength={255}
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                       required
@@ -94,6 +112,7 @@ export default function Contact() {
                     <Textarea
                       id="message"
                       rows={5}
+                      maxLength={2000}
                       value={formData.message}
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                       required
