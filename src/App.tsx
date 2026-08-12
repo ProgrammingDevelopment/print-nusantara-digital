@@ -13,6 +13,7 @@ import About from "./pages/About";
 import Contact from "./pages/Contact";
 import JoinUs from "./pages/JoinUs";
 import Auth from "./pages/Auth";
+import AdminProducts from "./pages/AdminProducts";
 import OAuthConsent from "./pages/OAuthConsent";
 import International from "./pages/International";
 import StyleGuide from "./pages/StyleGuide";
@@ -39,6 +40,7 @@ const App = () => (
                 <Route path="/contact" element={<Contact />} />
                 <Route path="/join-us" element={<JoinUs />} />
                 <Route path="/auth" element={<Auth />} />
+                <Route path="/admin/products" element={<AdminProducts />} />
                 <Route path="/.lovable/oauth/consent" element={<OAuthConsent />} />
                 <Route path="/international" element={<International />} />
                 <Route path="/style-guide" element={<StyleGuide />} />

@@ -1,3 +1,4 @@
+import { Seo } from "@/components/Seo";
 import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -22,6 +23,11 @@ export default function About() {
 
   return (
     <div className="min-h-screen py-12">
+      <Seo
+        title="About CV Elka Grafika — Printing Specialists"
+        description="Learn how CV Elka Grafika serves Indonesian brands with in-house offset and digital printing across three factory locations."
+        path="/about"
+      />
       <div className="container mx-auto px-4">
         {/* Header */}
         <motion.div
@@ -34,6 +40,7 @@ export default function About() {
         </motion.div>
 
         {/* History Section */}
+        <h2 className="sr-only">{t("about.history")}</h2>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -53,6 +60,7 @@ export default function About() {
         </motion.div>
 
         {/* Vision Section */}
+        <h2 className="sr-only">{t("about.vision")}</h2>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}

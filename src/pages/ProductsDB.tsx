@@ -6,6 +6,9 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Button } from "@/components/ui/button";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/hooks/useAuth";
+import { useIsAdmin } from "@/hooks/useIsAdmin";
+import { Seo } from "@/components/Seo";
+import { Link } from "react-router-dom";
 import { toast } from "sonner";
 import { FiShoppingCart } from "react-icons/fi";
 import type { Tables } from "@/integrations/supabase/types";
@@ -16,6 +19,7 @@ export default function ProductsDB() {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const { user } = useAuth();
+  const { isAdmin } = useIsAdmin();
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
   const [category, setCategory] = useState("all");
@@ -100,6 +104,36 @@ export default function ProductsDB() {
 
   return (
     <div className="min-h-screen py-12">
+      <Seo
+        title="Custom Printing Catalog — Elka Grafika"
+        description="Browse soft boxes, food boxes and printing services with live prices and stock, produced in-house in Indonesia."
+        path="/products"
+        jsonLd={{
+          "@context": "https://schema.org",
+          "@type": "ItemList",
+          name: "Elka Grafika printing catalog",
+          itemListElement: filteredProducts.slice(0, 30).map((product, i) => ({
+            "@type": "ListItem",
+            position: i + 1,
+            item: {
+              "@type": "Product",
+              name: product.name,
+              description: product.description ?? undefined,
+              image: product.image_url ?? undefined,
+              category: product.category,
+              offers: {
+                "@type": "Offer",
+                price: product.price,
+                priceCurrency: "IDR",
+                availability:
+                  product.stock > 0
+                    ? "https://schema.org/InStock"
+                    : "https://schema.org/OutOfStock",
+              },
+            },
+          })),
+        }}
+      />
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -107,6 +141,11 @@ export default function ProductsDB() {
           className="text-center mb-12"
         >
           <h1 className="text-5xl font-bold mb-4">{t("products.title")}</h1>
+          {isAdmin && (
+            <Button asChild variant="outline" className="mt-2">
+              <Link to="/admin/products">Manage catalog</Link>
+            </Button>
+          )}
         </motion.div>
 
         {/* Filter */}

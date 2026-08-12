@@ -1,4 +1,5 @@
 import { useTranslation } from "react-i18next";
+import { Seo } from "@/components/Seo";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
@@ -42,6 +43,18 @@ export default function Home() {
 
   return (
     <div className="min-h-screen">
+      <Seo
+        title="Elka Grafika — Offset &amp; Digital Printing Indonesia"
+        description="Custom packaging, soft boxes and food boxes printed in-house for Indonesian SMEs and brands. Get a free quote today."
+        path="/"
+        jsonLd={{
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          name: "CV Elka Grafika",
+          url: "https://elka-printing.lovable.app/",
+          publisher: { "@type": "Organization", name: "CV Elka Grafika" },
+        }}
+      />
       {/* Hero Section */}
       <section className="relative h-[600px] flex items-center overflow-hidden">
         <div
