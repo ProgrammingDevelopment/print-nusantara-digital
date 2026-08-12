@@ -58,6 +58,7 @@ const StyleGuide = () => {
         </div>
 
         {/* Content */}
+        <h2 className="sr-only capitalize">{activeTab}</h2>
         <div className="space-y-12">
           {/* Buttons Section */}
           {activeTab === "buttons" && (
