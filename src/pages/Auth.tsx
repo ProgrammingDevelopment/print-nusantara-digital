@@ -56,24 +56,29 @@ export default function Auth() {
 
     setLoading(true);
     try {
-      const redirectUrl = `${window.location.origin}/`;
-      const { error } = await supabase.auth.signUp({
+      const response = await fetch("/api/auth/signup", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password, fullName }),
+      });
+      const payload = await response.json();
+
+      if (!response.ok) {
+        throw new Error(payload.error ?? "Failed to sign up");
+      }
+
+      const { data: signInData, error: signInError } = await supabase.auth.signInWithPassword({
         email,
         password,
-        options: {
-          emailRedirectTo: redirectUrl,
-          data: {
-            full_name: fullName,
-          },
-        },
       });
 
-      if (error) throw error;
+      if (signInError) throw signInError;
 
-      toast.success("Account created successfully! Please check your email to verify.");
+      toast.success("Account created successfully and signed in.");
       setEmail("");
       setPassword("");
       setFullName("");
+      navigate("/");
     } catch (error) {
       toast.error(getErrorMessage(error, "Failed to sign up"));
     } finally {
@@ -87,14 +92,24 @@ export default function Auth() {
 
     setLoading(true);
     try {
-      const { error } = await supabase.auth.signInWithPassword({
-        email,
-        password,
+      const response = await fetch("/api/auth/signin", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password }),
       });
+      const payload = await response.json();
 
-      if (error) throw error;
+      if (!response.ok) {
+        throw new Error(payload.error ?? "Failed to sign in");
+      }
+
+      if (payload?.data?.session) {
+        await supabase.auth.setSession(payload.data.session);
+      }
 
       toast.success("Logged in successfully!");
+      setEmail("");
+      setPassword("");
       navigate("/");
     } catch (error) {
       toast.error(getErrorMessage(error, "Failed to sign in"));
