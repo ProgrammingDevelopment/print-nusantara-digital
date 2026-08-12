@@ -1,3 +1,4 @@
+import { Seo } from "@/components/Seo";
 import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
