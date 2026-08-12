@@ -24,6 +24,26 @@ import { formatCurrencyIDR } from "@/lib/format";
 
 type Product = Tables<"products">;
 
+const fetchProductsFromSupabase = async (category: string) => {
+  let query = supabase
+    .from("products")
+    .select("*")
+    .order("created_at", { ascending: false })
+    .range(0, 23);
+
+  if (category && category !== "all") {
+    query = query.eq("category", category);
+  }
+
+  const { data, error } = await query;
+
+  if (error) {
+    throw error;
+  }
+
+  return data ?? [];
+};
+
 export default function ProductsDB() {
   const { t } = useTranslation();
   const navigate = useNavigate();
@@ -51,6 +71,16 @@ export default function ProductsDB() {
       } catch (error) {
         if (error instanceof DOMException && error.name === "AbortError") {
           return;
+        }
+
+        if (import.meta.env.DEV) {
+          try {
+            const fallbackProducts = await fetchProductsFromSupabase(category);
+            setProducts(fallbackProducts);
+            return;
+          } catch (fallbackError) {
+            console.error("Supabase fallback failed", fallbackError);
+          }
         }
 
         toast.error(getErrorMessage(error, "Failed to load products"));

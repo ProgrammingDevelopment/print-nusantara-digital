@@ -33,6 +33,13 @@ cd <YOUR_PROJECT_NAME>
 npm i
 
 # Step 4: Start the development server with auto-reloading and an instant preview.
+# Use the Vercel local server when you want the API routes under /api/ to work the same way as deploy.
+npm run dev:vercel
+```
+
+If you only want to preview the React frontend and you already have valid Supabase client variables in `.env`, you can also use:
+
+```sh
 npm run dev
 ```
 
