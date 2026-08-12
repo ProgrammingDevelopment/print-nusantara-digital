@@ -1,0 +1,19 @@
+# CV Elka Grafika (PrintThink)
+
+> Offset and digital printing specialist in Indonesia, producing custom packaging, soft boxes and food boxes for SMEs and brands.
+
+CV Elka Grafika runs in-house offset and digital printing with three factory locations in Indonesia. The catalog covers custom packaging, soft boxes, food boxes, printing services and finishing. Prices are listed in Indonesian Rupiah (IDR).
+
+## Pages
+
+- [Home](/): Company overview, services and why brands choose Elka Grafika.
+- [Products](/products): Live catalog of printing and packaging products with prices and stock.
+- [About](/about): Company history, capabilities and factory locations.
+- [Contact](/contact): Contact form, phone and factory addresses for quotes.
+- [International](/international): Export and international ordering information.
+- [Join Us](/join-us): Careers and partnership opportunities.
+
+## Optional
+
+- [Brand guidelines](/brand-guidelines): Brand usage rules.
+- [Style guide](/style-guide): Design system reference.
