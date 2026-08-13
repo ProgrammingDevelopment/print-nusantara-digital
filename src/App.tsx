@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ThemeProvider } from "./components/ThemeProvider";
 import { Navbar } from "./components/Navbar";
 import { Footer } from "./components/Footer";
+import { ChatWidget } from "./components/ChatWidget";
 import Home from "./pages/Home";
 import Products from "./pages/Products";
 import ProductsDB from "./pages/ProductsDB";
@@ -50,6 +51,7 @@ const App = () => (
               </Routes>
             </main>
             <Footer />
+            <ChatWidget />
           </div>
         </BrowserRouter>
       </TooltipProvider>
